@@ -32,3 +32,11 @@ body {
   margin-left: 150px;
 
 }
+.searchbar {
+  margin-left: 150px;
+  margin-bottom: 25px;
+  background-color: lavender;
+  width: 50%;
+  padding: 10px;
+  border: solid black;
+}

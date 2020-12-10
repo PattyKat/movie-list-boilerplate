@@ -1,5 +1,6 @@
 import React from 'react';
 import DisplayMovies from './DisplayMovies.jsx';
+import SearchBar from './SearchBar.jsx'
 
 const movies = [
   {title: 'Mean Girls'},
@@ -11,6 +12,7 @@ const movies = [
 
 const App = (props) => (
   <div>
+    <SearchBar />
     <DisplayMovies movies = {movies}/>
   </div>
 );
