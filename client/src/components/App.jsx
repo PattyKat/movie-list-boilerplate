@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from'axios';
 import DisplayMovies from './DisplayMovies.jsx';
 import SearchBar from './SearchBar.jsx'
 
@@ -15,9 +16,22 @@ class App extends React.Component {
     super(props);
     this.state = {
       movies: movies,
-      filtered: []
     }
     this.filterMovies = this.filterMovies.bind(this);
+    this.getMovies = this.getMovies.bind(this);
+  }
+
+  componentDidMount(){
+    //set movie state to movies from the database
+    this.getMovies();
+
+  }
+
+  getMovies (){
+    axios.get('/api/movies')
+    .then((data => {
+      console.log(data.data);
+      this.setState({movies: data.data})}))
   }
 
   filterMovies (title){
@@ -43,7 +57,7 @@ class App extends React.Component {
     return (
       <div>
         <SearchBar filterMovies = {this.filterMovies}/>
-        <DisplayMovies movies = {this.state.movies} filtered = {this.state.filtered} />
+        <DisplayMovies movies = {this.state.movies} />
       </div>
     )
   }

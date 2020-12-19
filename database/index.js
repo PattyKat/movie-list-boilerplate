@@ -1,7 +1,7 @@
-var sql = require('sql');
+var mysql = require('mysql');
 var db = mysql.createConnection({
   user: 'student',
-  password: 'Student2!!',
+  password: 'Student12!!',
   database: 'movies'
 });
 

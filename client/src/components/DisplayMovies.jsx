@@ -6,12 +6,13 @@ const DisplayMovies = (props) => (
 
 
 
+
   <div className = 'moviebox'>
 
 
-   {props.movies.map(({title}, idx) => {
+   {props.movies.map(({id,title}) => {
       return (
-       <span  key = {title + idx} value = {idx}>{title}</span>
+       <span  key = {title + id} value = {id}>{title}</span>
       )
    })}
   </div>
