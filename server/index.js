@@ -6,6 +6,8 @@ const PORT = 3000;
 
 
 app.use(express.static('public'));
+app.use(express.json());//this parses all json coming in the results
+app.use(express.urlencoded());
 
 app.use((req, res, next) => {
   console.log(`${req.method} request coming in for ${req.url}`);
