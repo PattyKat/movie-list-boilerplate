@@ -18,8 +18,8 @@ onChangeHandler (event) {
 }
 
 onSubmitHandler (event) {
-  //console.log(this.state.title);
-  this.props.filterMovies(this.state.title);
+  console.log(this.state.title.toLowerCase());
+  this.props.filterMovies(this.state.title.toLowerCase());
   event.preventDefault();
 }
 

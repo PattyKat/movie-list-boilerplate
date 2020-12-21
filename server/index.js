@@ -26,6 +26,20 @@ app.get('/api/movies', (req, res) => {
   } )
 })
 
+app.get('/api/movies/filter', (req, res) => {
+  console.log('fetching filtered movies table');
+  //does title appear in request body?
+  //console.log(req.query.title);
+  const sql = `SELECT * FROM movies WHERE title like '${req.query.title}%'`;
+  db.query(sql, (err, data) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send(data)
+    }
+  } )
+})
+
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 })
