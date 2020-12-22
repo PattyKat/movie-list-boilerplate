@@ -1,15 +1,9 @@
 import React from 'react';
 import axios from'axios';
 import DisplayMovies from './DisplayMovies.jsx';
-import SearchBar from './SearchBar.jsx'
+import SearchBar from './SearchBar.jsx';
+import AddMovieBar from './AddMovieBar.jsx'
 
-// const movies = [
-//   {title: 'Mean Girls'},
-//   {title: 'Hackers'},
-//   {title: 'The Grey'},
-//   {title: 'Sunshine'},
-//   {title: 'Ex Machina'},
-// ];
 
 class App extends React.Component {
   constructor (props) {
@@ -20,6 +14,7 @@ class App extends React.Component {
     }
     this.filterMovies = this.filterMovies.bind(this);
     this.getMovies = this.getMovies.bind(this);
+    this.addMovie = this.addMovie.bind(this);
   }
 
   componentDidMount(){
@@ -52,13 +47,27 @@ class App extends React.Component {
     //if query returns an empty array, due to no matches, alert the user of no matches
     //set movies state to data
   }
+  addMovie (title) {
+    //takes title from addmoviebar component
+    //axios request to add movie title goes here
+    //upon success will invoke getMovies() to display updated movies
+    axios.post('/api/movies', {title})
+    .then((err, data) => {
+      if(err){
+        console.log(err)
+      } else {
+        this.getMovies()
+      }
+    })
+  }
 
 
   render () {
     return (
       <div>
+        <AddMovieBar addMovie = {this.addMovie}/>
         <SearchBar filterMovies = {this.filterMovies}/>
-        <DisplayMovies movies = {this.state.movies/*.filter(this.state.filterToggle)*/} />
+        <DisplayMovies movies = {this.state.movies} />
       </div>
     )
   }

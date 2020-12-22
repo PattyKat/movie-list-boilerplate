@@ -40,6 +40,19 @@ app.get('/api/movies/filter', (req, res) => {
   } )
 })
 
+app.post('/api/movies', (req, res) => {
+  const sql = `INSERT INTO movies (title) VALUES ('${req.body.title}')`;
+  db.query(sql, (err, data) => {
+    if(err){
+      res.send(err)
+    } else {
+      console.log('add movie successful!')
+      res.send(data)
+    }
+  })
+
+})
+
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 })
