@@ -52,13 +52,9 @@ class App extends React.Component {
     //axios request to add movie title goes here
     //upon success will invoke getMovies() to display updated movies
     axios.post('/api/movies', {title})
-    .then((err, data) => {
-      if(err){
-        console.log(err)
-      } else {
+    .then(
         this.getMovies()
-      }
-    })
+    )
   }
 
 
