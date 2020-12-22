@@ -18,9 +18,10 @@ onChangeHandler (event) {
 }
 
 onSubmitHandler (event) {
-  console.log(this.state.title.toLowerCase());
+  //console.log(this.state.title.toLowerCase());
   this.props.filterMovies(this.state.title.toLowerCase());
   event.preventDefault();
+  this.setState({title:''})
 }
 
 render () {

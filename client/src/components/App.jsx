@@ -9,8 +9,7 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      movies: [],
-      filterToggle: x => x
+      movies: []
     }
     this.filterMovies = this.filterMovies.bind(this);
     this.getMovies = this.getMovies.bind(this);
@@ -26,7 +25,7 @@ class App extends React.Component {
   getMovies (){
     axios.get('/api/movies')
     .then((data => {
-      console.log(data.data);
+      //console.log(data.data);
       this.setState({movies: data.data});
   }))
   }
@@ -34,9 +33,9 @@ class App extends React.Component {
   filterMovies (title){
     //title = lowercase version of search bar entry
     //send axios get request, that uses a url like '/api/movies/filter
-    axios.get('/api/movies/filter', {params: {title}})
+    axios.get('/api/movies/filter', {params: {title}})  //once schema is updated you wil have to change to /filtered
     .then((data) => {
-      console.log(data.data);
+      //console.log(data.data);
       if(data.data.length === 0){
         alert('I\'m sorry, there is no movie by this name');
       } else {

@@ -16,6 +16,7 @@ class AddMovieBar extends React.Component {
     const title = this.state.title;
     this.props.addMovie(title);
     event.preventDefault();
+    this.setState({title:''})
 
   }
 

@@ -26,7 +26,7 @@ app.get('/api/movies', (req, res) => {
   } )
 })
 
-app.get('/api/movies/filter', (req, res) => {
+app.get('/api/movies/filter', (req, res) => {//once you update the schema, you will need to change /filter to /filtered
   console.log('fetching filtered movies table');
   //does title appear in request body?
   //console.log(req.query.title);
