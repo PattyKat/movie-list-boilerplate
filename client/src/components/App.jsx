@@ -42,29 +42,15 @@ class App extends React.Component {
     axios.get('/api/movies/filter', {params: {title}})
     .then((data) => {
       console.log(data.data);
+      if(data.data.length === 0){
+        alert('I\'m sorry, there is no movie by this name');
+      } else {
       this.setState({movies: data.data})
+      }
     })
     //change the sql query to only return movies that match title
+    //if query returns an empty array, due to no matches, alert the user of no matches
     //set movies state to data
-
-
-
-    //set state of filter to a function
-
-    // const movies = [...this.state.movies];
-    // console.log(title);
-    // console.log(movies);
-    // var lCTitle = title.toLowerCase();
-    // const hold = [];
-
-    // for (var i = 0; i < movies.length ; i++) {
-    //   var currentMovieTitle = movies[i].title.toLowerCase();
-    //   if(currentMovieTitle.startsWith(`${lCTitle}`)) {
-    //     console.log('match!', currentMovieTitle);
-    //     hold.push(movies[i]);
-    //   }
-    // }
-    // this.setState({movies: hold})
   }
 
 

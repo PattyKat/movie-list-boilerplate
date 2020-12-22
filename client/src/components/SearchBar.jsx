@@ -30,7 +30,7 @@ render () {
     <form onSubmit = {this.onSubmitHandler}>
       <label>
         Search:
-        <input type = "text" value = {this.state.title} onChange = {this.onChangeHandler}></input>
+        <input type = "text" value = {this.state.title} onChange = {this.onChangeHandler} placeholder = "Search here..."></input>
       </label>
 
     </form>
