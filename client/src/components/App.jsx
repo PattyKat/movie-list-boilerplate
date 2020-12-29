@@ -2,7 +2,8 @@ import React from 'react';
 import axios from'axios';
 import DisplayMovies from './DisplayMovies.jsx';
 import SearchBar from './SearchBar.jsx';
-import AddMovieBar from './AddMovieBar.jsx'
+import AddMovieBar from './AddMovieBar.jsx';
+import Toggles from './Toggles.jsx'
 
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
     this.filterMovies = this.filterMovies.bind(this);
     this.getMovies = this.getMovies.bind(this);
     this.addMovie = this.addMovie.bind(this);
+    this.changeWatched = this.changeWatched.bind(this);
   }
 
   componentDidMount(){
@@ -56,13 +58,22 @@ class App extends React.Component {
     )
   }
 
+  changeWatched(id, watched){
+    //console.log(id, watched);
+    axios.put('/api/movies', {id, watched})
+    .then(
+      this.getMovies()
+    )
+  }
+
 
   render () {
     return (
       <div>
         <AddMovieBar addMovie = {this.addMovie}/>
         <SearchBar filterMovies = {this.filterMovies}/>
-        <DisplayMovies movies = {this.state.movies} />
+        <Toggles />
+        <DisplayMovies movies = {this.state.movies} watched={this.changeWatched}/>
       </div>
     )
   }

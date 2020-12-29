@@ -21,16 +21,21 @@ body {
 
 }
 
-.moviebox span {
+.movieItem {
   color: black;
   font-weight: bold;
   background-color: lightgrey;
   width: 50%;
   padding: 10px;
   border: solid black;
-  display: block;
+  display: inline-block;
   margin-left: 150px;
 
+}
+.movieItem button {
+  float: right;
+  background-color: rgb(32, 175, 201);
+  text-shadow: white;
 }
 .searchbar, .addMovieBar {
   margin-left: 150px;
@@ -39,4 +44,13 @@ body {
   width: 50%;
   padding: 10px;
   border: solid black;
+}
+
+.toggles{
+  margin-left: 150px;
+  width: 50%;
+}
+
+.toggles button {
+  height: 40px;
 }

@@ -37,7 +37,6 @@ class AddMovieBar extends React.Component {
           Add A Movie:
           <input type="text" value={this.state.title} placeholder="type a movie title..." onChange={this.onChangeHandler}/>
         </label>
-        <input type="submit" value="Submit"/>
       </form>
 
 

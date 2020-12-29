@@ -41,7 +41,7 @@ app.get('/api/movies/filter', (req, res) => {//once you update the schema, you w
 })
 
 app.post('/api/movies', (req, res) => {
-  const sql = `INSERT INTO movies (title) VALUES ('${req.body.title}')`;
+  const sql = `INSERT INTO movies (title, watched) VALUES ('${req.body.title}', 'false')`;
   db.query(sql, (err, data) => {
     if(err){
       res.send(err)
@@ -51,6 +51,22 @@ app.post('/api/movies', (req, res) => {
     }
   })
 
+})
+app.put('/api/movies',(req, res)=>{
+  //console.log(req.body); //{ id: '4', watched: 'yes' }
+  var sql;
+  if(req.body.watched === 'yes'){
+    sql=`UPDATE movies SET watched='false' WHERE id=${req.body.id}`;
+  } else {
+    sql = `UPDATE movies SET watched='yes' WHERE id=${req.body.id}`;
+  }
+  db.query(sql, (err, data) => {
+    if(err){
+      res.send(err)
+    } else {
+      res.send(data)
+    }
+  })
 })
 
 app.listen(PORT, () => {
