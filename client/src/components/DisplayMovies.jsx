@@ -15,6 +15,10 @@ const DisplayMovies = (props) => {
    props.watched(id, watched);
 
   };
+  const onDeleteClick=(event)=>{
+   //console.log('delete', event.target.value);
+   props.deleteMovie(event.target.value);
+  }
 
   return (
 
@@ -25,6 +29,7 @@ const DisplayMovies = (props) => {
 
         return (
           <div className = 'movieItem' key = {id} value={watched}>
+          <button className="deleteMovies" value ={id} onClick={onDeleteClick}>Delete</button>
           <span  key = {title + id} value = {id}>{title}</span>
           <button style={(watched === 'yes')? {backgroundColor: 'green'}:{backgroundColor: 'pink'}} value={`${id} ${watched}`} onClick={onWatchClick}>Watched</button>
           </div>

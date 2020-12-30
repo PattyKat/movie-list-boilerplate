@@ -37,6 +37,14 @@ body {
   background-color: rgb(32, 175, 201);
   text-shadow: white;
 }
+.movieItem .deleteMovies {
+  float: left;
+  color: #ffe6e6;
+  text-shadow: white;
+  background-color: rgb(36, 5, 33);
+  margin-right: 10px;
+  border-radius: 50%;
+}
 .searchbar, .addMovieBar {
   margin-left: 150px;
   margin-bottom: 25px;

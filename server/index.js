@@ -69,6 +69,18 @@ app.put('/api/movies',(req, res)=>{
   })
 })
 
+app.delete('/api/movies', (req, res)=>{
+  //console.log(req.body);
+  var sql = `DELETE FROM movies WHERE id=${req.body.id}`;
+  db.query(sql, (err, data) => {
+    if(err){
+      res.send(err)
+    } else {
+      res.send(data)
+    }
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 })
