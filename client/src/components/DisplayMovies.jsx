@@ -5,7 +5,7 @@ import {useState, useEffect} from 'react';
 
 const DisplayMovies = (props) => {
 
-  const [button, setButton] = useState(false);
+  //const [button, setButton] = useState(false);
 
   const onWatchClick = (event) =>{
    var info = event.target.value.split(' ')
@@ -26,7 +26,7 @@ const DisplayMovies = (props) => {
         return (
           <div className = 'movieItem' key = {id} value={watched}>
           <span  key = {title + id} value = {id}>{title}</span>
-          <button style={(watched === 'yes')? {backgroundColor: 'green'}:{backgroundColor: 'light blue'}} value={`${id} ${watched}`} onClick={onWatchClick}>Watched</button>
+          <button style={(watched === 'yes')? {backgroundColor: 'green'}:{backgroundColor: 'pink'}} value={`${id} ${watched}`} onClick={onWatchClick}>Watched</button>
           </div>
         )
       })}

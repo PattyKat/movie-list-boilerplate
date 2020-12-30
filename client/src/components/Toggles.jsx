@@ -2,10 +2,20 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 
 const Toggles = (props)=> {
-  const [display, setDisplay]=useState(true);
+  const [displayWatched, setDisplayWatched]=useState(true);
+  const [displayNotWatched, setDisplayToWatch]=useState(false);
 
-  const onClickHandler = (event) => {
-    setDisplay(!display);
+  const onClickHandlerToWatch = (event) => {
+    setDisplayWatched(false);
+    setDisplayToWatch(true);
+    props.displayFilter(false);
+    event.preventDefault();
+  }
+
+  const onClickHandlerWatched =(event)=>{
+    setDisplayWatched(true);
+    setDisplayToWatch(false);
+    props.displayFilter(true);
     event.preventDefault();
   }
 
@@ -13,8 +23,8 @@ const Toggles = (props)=> {
 
   return (
     <div className="toggles">
-      <button style = {(display)? {backgroundColor:'green'} : {backgroundColor:'light blue'} } onClick ={onClickHandler}>Watched</button>
-      <button style = {(!display)? {backgroundColor:'green'} : {backgroundColor:'light blue'} } onClick ={onClickHandler}>To Watch</button>
+      <button style = {(displayWatched)? {backgroundColor:'green'} : {backgroundColor:'pink'} } onClick ={onClickHandlerWatched}>Watched</button>
+      <button style = {(displayNotWatched)? {backgroundColor:'green'} : {backgroundColor:'pink'} } onClick ={onClickHandlerToWatch}>To Watch</button>
     </div>
   );
 

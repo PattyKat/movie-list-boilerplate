@@ -10,12 +10,14 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      movies: []
+      movies: [],
+      filter: (x)=> x.watched === 'yes'
     }
     this.filterMovies = this.filterMovies.bind(this);
     this.getMovies = this.getMovies.bind(this);
     this.addMovie = this.addMovie.bind(this);
     this.changeWatched = this.changeWatched.bind(this);
+    this.displayFilter = this.displayFilter.bind(this);
   }
 
   componentDidMount(){
@@ -65,6 +67,13 @@ class App extends React.Component {
       this.getMovies()
     )
   }
+  displayFilter(toggleStatus){
+    if(toggleStatus){
+      this.setState({filter: (x)=> x.watched === 'yes'})
+    } else {
+      this.setState({filter: (x)=> x.watched === 'false'})
+    }
+  }
 
 
   render () {
@@ -72,8 +81,8 @@ class App extends React.Component {
       <div>
         <AddMovieBar addMovie = {this.addMovie}/>
         <SearchBar filterMovies = {this.filterMovies}/>
-        <Toggles />
-        <DisplayMovies movies = {this.state.movies} watched={this.changeWatched}/>
+        <Toggles displayFilter = {this.displayFilter}/>
+        <DisplayMovies movies = {this.state.movies.filter(this.state.filter)} watched={this.changeWatched}/>
       </div>
     )
   }
