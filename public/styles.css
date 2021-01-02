@@ -45,6 +45,29 @@ body {
   margin-right: 10px;
   border-radius: 50%;
 }
+.moviePopup {
+  background-color: #774683;
+  margin-top:10px;
+}
+.moviePopup span{
+  display: block;
+}
+.movieDetailsContainer {
+  display: inline;
+  width: 50%;
+  position: relative;
+}
+.moviePopupContainer img {
+  width: 25%;
+  height: 40px;
+  position: absolute;
+  margin-left:50px;
+  margin-top: 15px;
+}
+.moviePopupContainer {
+  display: flex;
+  position:relative
+}
 .searchbar, .addMovieBar {
   margin-left: 150px;
   margin-bottom: 25px;

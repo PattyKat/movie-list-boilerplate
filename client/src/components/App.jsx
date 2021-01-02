@@ -91,7 +91,7 @@ class App extends React.Component {
     } else {
       this.setState({displayMovieInfoDropdown: null})
     }
-    console.log(typeof this.state.displayMovieInfoDropdown,this.state.displayMovieInfoDropdown )
+    //console.log(typeof this.state.displayMovieInfoDropdown,this.state.displayMovieInfoDropdown )
   }
 
 
