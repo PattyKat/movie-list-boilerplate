@@ -5,7 +5,7 @@ import {useState, useEffect} from 'react';
 
 const DisplayMovies = (props) => {
 
-  //const [button, setButton] = useState(false);
+  const [movieInfoDropdown, setmovieInfoDropdown] = useState(0);
 
   const onWatchClick = (event) =>{
    var info = event.target.value.split(' ')
@@ -19,6 +19,12 @@ const DisplayMovies = (props) => {
    //console.log('delete', event.target.value);
    props.deleteMovie(event.target.value);
   }
+  const onTitleClick=(event)=>{
+    console.log(typeof event.target.dataset.value, event.target.dataset.value);
+    setmovieInfoDropdown(event.target.dataset.value);
+    props.activateMovieInfoDropdown(event.target.dataset.value);
+
+  }
 
   return (
 
@@ -27,10 +33,14 @@ const DisplayMovies = (props) => {
       {props.movies.map(({id,title, watched}) => {
         //console.log(watched);
 
+
         return (
           <div className = 'movieItem' key = {id} value={watched}>
           <button className="deleteMovies" value ={id} onClick={onDeleteClick}>Delete</button>
-          <span  key = {title + id} value = {id}>{title}</span>
+          <span  key = {title + id} data-value= {id} onClick={onTitleClick}>{title}</span>
+          {(props.activateDropdown == {id}) &&
+          <div>This is where movie info goes</div>
+          }
           <button style={(watched === 'yes')? {backgroundColor: 'green'}:{backgroundColor: 'pink'}} value={`${id} ${watched}`} onClick={onWatchClick}>Watched</button>
           </div>
         )

@@ -11,7 +11,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       movies: [],
-      filter: (x)=> x.watched === 'yes'
+      filter: (x)=> x.watched === 'yes',
+      displayMovieInfoDropdown: null
     }
     this.filterMovies = this.filterMovies.bind(this);
     this.getMovies = this.getMovies.bind(this);
@@ -19,6 +20,7 @@ class App extends React.Component {
     this.changeWatched = this.changeWatched.bind(this);
     this.displayFilter = this.displayFilter.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
+    this.activateMovieInfoDropdown=this.activateMovieInfoDropdown.bind(this);
   }
 
   componentDidMount(){
@@ -82,6 +84,16 @@ class App extends React.Component {
     }
   }
 
+  activateMovieInfoDropdown(id){
+    //console.log(id);
+    if(this.state.displayMovieInfoDropdown === null){
+    this.setState({displayMovieInfoDropdown:id})
+    } else {
+      this.setState({displayMovieInfoDropdown: null})
+    }
+    console.log(typeof this.state.displayMovieInfoDropdown,this.state.displayMovieInfoDropdown )
+  }
+
 
   render () {
     return (
@@ -89,7 +101,7 @@ class App extends React.Component {
         <AddMovieBar addMovie = {this.addMovie}/>
         <SearchBar filterMovies = {this.filterMovies}/>
         <Toggles displayFilter = {this.displayFilter}/>
-        <DisplayMovies movies = {this.state.movies.filter(this.state.filter)} watched={this.changeWatched} deleteMovie={this.deleteMovie}/>
+        <DisplayMovies movies = {this.state.movies.filter(this.state.filter)} watched={this.changeWatched} deleteMovie={this.deleteMovie}  activateMovieInfoDropdown={this.activateMovieInfoDropdown}activateDropdown={this.state.displayMovieInfoDropdown}/>
       </div>
     )
   }
